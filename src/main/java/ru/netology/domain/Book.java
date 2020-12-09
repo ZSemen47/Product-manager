@@ -2,6 +2,8 @@ package ru.netology.domain;
 
 import lombok.EqualsAndHashCode;
 
+import java.util.Objects;
+
 @EqualsAndHashCode (callSuper = true)
 public class Book extends Product {
     private String author;
@@ -16,6 +18,12 @@ public class Book extends Product {
         this.author = author;
         this.pages = pages;
         this.publishedYear = publishedYear;
+    }
+
+
+    @Override
+    public boolean matches(String search) {
+        return super.matches(search) || search.equals(author);
     }
 
     public String getAuthor() {
